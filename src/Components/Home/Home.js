@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import { BlogContext } from '../../App'
 import Blog from '../Blog/Blog'
 
 const Home = () => {
-    const [blogs, setBlogs] = useState([])
+    const [blogs] = useContext(BlogContext)
 
-    useEffect(() => {
-        fetch('./data.json')
-            .then(res => res.json())
-            .then(data => setBlogs(data))
-    }, [])
     return (
         <div className="w-[85%] mx-auto grid grid-cols-1 gap-12 mt-20">
             {blogs.map(blog => (
